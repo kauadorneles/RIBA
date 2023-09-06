@@ -4,10 +4,12 @@
     "title": "JIRA Create Issue API",
     "version": "1.0"
   },
-  "basePath": "/rest/api/3",
+  "tags": [],
+  "host": jaamautomation.atlassian.net,
   "schemes": [
     "https"
   ],
+  "basePath": "/rest/api/3",
   "paths": {
     "/issue": {
       "post": {
