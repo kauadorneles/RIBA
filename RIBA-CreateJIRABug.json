@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "tags": [],
-  "host": jaamautomation.atlassian.net,
+  "host": "jaamautomation.atlassian.net",
   "schemes": [
     "https"
   ],
