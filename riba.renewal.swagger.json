@@ -1,0 +1,616 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "Unknown",
+    "title": "Riba Data Warehouse",
+    "description": "This is RIBA Data Warehouse REST API for the Renewals app",
+    "contact": {}
+  },
+  "host": "rest.synatic.com",
+  "basePath": "/ribadev/data-warehouse",
+  "securityDefinitions": {
+    "WorkManagementSecurityScheme": {
+      "type": "apiKey",
+      "name": "x-api-key",
+      "in": "header"
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/members/{member}": {
+      "get": {
+        "description": "",
+        "summary": "getMember",
+        "tags": [
+          "members"
+        ],
+        "operationId": "getMember",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "member",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "The fields to select e.g. $select=field1,field2"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The results fo the lookup",
+            "schema": {
+              "$ref": "#/definitions/member"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Request error",
+            "schema": {
+              "$ref": "#/definitions/formatError1"
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorizedError1"
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/notFoundError1"
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/serverError1"
+            },
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "summary": "updateMember",
+        "tags": [
+          "members"
+        ],
+        "operationId": "updateMember",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "member",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "enum": [
+              "application/json"
+            ],
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "The input",
+            "schema": {
+              "$ref": "#/definitions/member"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The result of the flow",
+            "schema": {
+              "$ref": "#/definitions/member"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Request error",
+            "schema": {
+              "$ref": "#/definitions/formatError1"
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorizedError1"
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Request error",
+            "schema": {
+              "$ref": "#/definitions/formatError1"
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/serverError1"
+            },
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "summary": "deleteMember",
+        "tags": [
+          "members"
+        ],
+        "operationId": "deleteMember",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "member",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content",
+            "headers": {}
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorizedError1"
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/notFoundError1"
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/serverError1"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/createMember": {
+      "post": {
+        "description": "",
+        "summary": "createMember",
+        "tags": [
+          "members"
+        ],
+        "operationId": "createMember",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "enum": [
+              "application/json"
+            ],
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "The record to create",
+            "schema": {
+              "$ref": "#/definitions/member"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The record created",
+            "schema": {
+              "$ref": "#/definitions/member"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Request error",
+            "schema": {
+              "$ref": "#/definitions/formatError1"
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorizedError1"
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/serverError1"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/members/": {
+      "get": {
+        "description": "",
+        "summary": "getMembers",
+        "tags": [
+          "members"
+        ],
+        "operationId": "getMembers",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "The oData formatted filter e.g. $filter=field eq value"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "The fields to select e.g. $select=field1,field2"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "required": false,
+            "default": 0,
+            "type": "integer",
+            "format": "int32",
+            "description": "The records to skip"
+          },
+          {
+            "name": "$limit",
+            "in": "query",
+            "required": false,
+            "default": 50,
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of records to return"
+          },
+          {
+            "name": "$sort",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "The sort order of records e.g. $sort=field1,-field2"
+          },
+          {
+            "name": "$rawQuery",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "A mongodb json find statement as a string. e.g. {\"field1\":1}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The results fo the query",
+            "schema": {
+              "type": "array",
+              "default": "",
+              "items": {
+                "$ref": "#/definitions/member"
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Request error",
+            "schema": {
+              "$ref": "#/definitions/formatError1"
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorizedError1"
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/serverError1"
+            },
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "member": {
+      "title": "member",
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "Forename": {
+          "type": "string"
+        },
+        "Surname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "organizationID": {
+          "type": "string"
+        },
+        "memberRef": {
+          "type": "string"
+        },
+        "membershipId": {
+          "type": "string"
+        },
+        "DateofBirth": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "ProfConduct": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "_dateUpdated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "AttributeType": {
+                "type": "string"
+              },
+              "Detail": {
+                "type": "string"
+              },
+              "TypeCode": {
+                "type": "string"
+              },
+              "attribute": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "olsSecurityAttribute": {
+                "type": "string"
+              },
+              "olssec": {
+                "type": "string"
+              },
+              "show": {
+                "type": "boolean"
+              },
+              "validFrom": {
+                "type": "string"
+              },
+              "validTo": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "DisplayName": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "Town": {
+                "type": "string"
+              },
+              "County": {
+                "type": "string"
+              },
+              "Postcode": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "Type": {
+                "type": "string"
+              },
+              "Main": {
+                "type": "boolean"
+              },
+              "comments": {
+                "type": "string"
+              },
+              "ValidFrom": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "Validto": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "formatError1": {
+      "title": "formatError1",
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "invalid": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "notFoundError1": {
+      "title": "notFoundError1",
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "errorMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "serverError1": {
+      "title": "serverError1",
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "errorMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "serviceInfo": {
+      "title": "serviceInfo",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the service",
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the service",
+          "type": "string"
+        }
+      }
+    },
+    "unauthorizedError1": {
+      "title": "unauthorizedError1",
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "errorMessage": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "WorkManagementSecurityScheme": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "members"
+    },
+    {
+      "name": "Service Info",
+      "description": "Base service info"
+    }
+  ]
+}
